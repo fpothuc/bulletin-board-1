@@ -21,6 +21,9 @@
       body h1 {
         background-color: #F08CAE
       }
+      body h2 {
+        color: #40396B;
+      }
       body th {
         background-color: #F08CAE;
       }
@@ -31,10 +34,11 @@
   </head>
 
   <body>
-    <ul>
-      <li><a href="/boards">Boards</a></li>
-      <li><a href="/posts">Posts</a></li>
-    </ul>
+    <div>
+      <a href="/boards">Bulletin Board</a>
+      <p></p>
+      <a href="/posts">Posts</a>
+    </div>
     <%= yield %>
   </body>
 </html>

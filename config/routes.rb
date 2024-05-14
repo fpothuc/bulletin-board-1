@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  # root "articles#index"
+  get("/", controller: "boards", action: "index")
   # Routes for the Post resource:
 
   # CREATE
@@ -36,10 +41,4 @@ Rails.application.routes.draw do
   get("/delete_board/:path_id", { :controller => "boards", :action => "destroy" })
 
   #------------------------------
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  get("/", controller: "home", action: "homepage")
 end
