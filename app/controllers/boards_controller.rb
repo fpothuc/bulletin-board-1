@@ -8,6 +8,10 @@ class BoardsController < ApplicationController
   end
 
   def show
+    matching_posts = Post.all
+
+    @list_of_posts = matching_posts.order({ :created_at => :desc })
+    
     the_id = params.fetch("path_id")
 
     matching_boards = Board.where({ :id => the_id })

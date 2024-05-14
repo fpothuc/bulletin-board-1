@@ -11,4 +11,7 @@
 #  board_id   :integer
 #
 class Post < ApplicationRecord
+  # def active
+  #   @list_of_posts = 
+  # end
 end

@@ -37,25 +37,41 @@
       Add a new post
     </h2>
 
-    <form action="/insert_post/<%= @the_board.id %>"  method="post" >
+    <form action="/insert_post" method="post">
       <div>
         <label for="title_box">
           Title
         </label>
 
-        <input type="text" id="title_box" name="query_title" value="<%= @the_board.name %>">
+        <input type="text" id="title_box" name="query_title">
       </div>
 
       <div>
         <label for="body_box">
-          Title
+          Body
         </label>
 
-        <input type="text" id="body_box" name="query_body" value="<%= @the_board.name %>">
+        <textarea id="body_box" name="query_body" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="expires_on_box">
+          Expires on
+        </label>
+
+        <input type="date" id="expires_on_box" name="query_expires_on">
+      </div>
+
+      <div>
+        <label for="board_id_box">
+          Board
+        </label>
+
+        <input type="text" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
       </div>
 
       <button>
-        Update board
+        Add post
       </button>
     </form>
   </div>
@@ -65,12 +81,31 @@
   <h2>Active Posts</h2>
   <table>
     <tr>
-      <th> One </th>
-      <th> Two </th>
+      <th> Title </th>
+      <th> Body </th>
+      <th> Posted On </th>
+      <th> Expires On </th>
     </tr>
     <tr>
-      <td>1 1 1 1 1 1 1 1 1</td>
-      <td>2 2 2 2 2 2 2 2 2 2</td>
+      <%@list_of_posts.each do |a_post|%>
+        <%if a_post.board_id == @the_board.id%>
+          <tr>
+            <td>
+              <%=a_post.title%>
+            </td>
+            <td>
+              <%=a_post.body%>
+            </td>
+            <td>
+              <%=a_post.created_at%>
+            </td>
+            <td>
+              <%=a_post.expires_on%>
+            </td>
+          </tr>
+        <%else%>
+        <%end%>
+      <%end%>
     </tr>
   </table>
 </div>
@@ -79,8 +114,10 @@
   <h2>Expired Posts</h2>
   <table>
     <tr>
-      <th> One </th>
-      <th> Two </th>
+      <th> Title </th>
+      <th> Body </th>
+      <th> Posted On </th>
+      <th> Expires On </th>
     </tr>
     <tr>
       <td>1 1 1 1 1 1 1 1 1</td>
