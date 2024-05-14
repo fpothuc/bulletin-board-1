@@ -31,6 +31,35 @@
     </form>
   </div>
 </div>
+<div>
+  <div>
+    <h2>
+      Add a new post
+    </h2>
+
+    <form action="/insert_post/<%= @the_board.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_board.name %>">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Title
+        </label>
+
+        <input type="text" id="body_box" name="query_body" value="<%= @the_board.name %>">
+      </div>
+
+      <button>
+        Update board
+      </button>
+    </form>
+  </div>
+</div>
 
 <div>
   <h2>Active Posts</h2>
