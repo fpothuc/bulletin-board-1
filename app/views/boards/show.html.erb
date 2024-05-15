@@ -9,28 +9,6 @@
 
 <hr>
 
-
-<div>
-  <div>
-    <h2>
-      Edit board
-    </h2>
-
-    <form action="/modify_board/<%= @the_board.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name" value="<%= @the_board.name %>">
-      </div>
-
-      <button>
-        Update board
-      </button>
-    </form>
-  </div>
-</div>
 <div>
   <div>
     <h2>
@@ -63,11 +41,7 @@
       </div>
 
       <div>
-        <label for="board_id_box">
-          Board
-        </label>
-
-        <input type="text" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
+        <input type="hidden" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
       </div>
 
       <button>
@@ -87,8 +61,8 @@
       <th> Expires On </th>
     </tr>
     <tr>
-      <%@list_of_posts.each do |a_post|%>
-        <%if a_post.board_id == @the_board.id%>
+      <%matching_posts = Post.where({:board_id => @the_board.id}).order({:expires_on => :asc})%>
+      <%matching_posts.each do |a_post|%>
           <tr>
             <td>
               <%=a_post.title%>
@@ -103,8 +77,6 @@
               <%=a_post.expires_on%>
             </td>
           </tr>
-        <%else%>
-        <%end%>
       <%end%>
     </tr>
   </table>
